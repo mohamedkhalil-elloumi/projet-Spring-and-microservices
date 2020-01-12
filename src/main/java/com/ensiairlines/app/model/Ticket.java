@@ -17,14 +17,15 @@ public class Ticket{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id_ticket")
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_client")
     private Client client;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_vol")
     private Vol vol;
 
     @Column(name = "prix")

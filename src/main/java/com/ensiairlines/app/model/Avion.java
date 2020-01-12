@@ -3,13 +3,13 @@ package com.ensiairlines.app.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Avions")
-
+@Table(name = "Avion")
 public class Avion {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id_avion")
     private long id;
 
     @Column(name = "type")
@@ -24,8 +24,7 @@ public class Avion {
     public Avion() {
     }
 
-    public Avion(long id, String type, int nb_places, boolean status) {
-        id = id;
+    public Avion(String type, int nb_places, boolean status) {
         this.type = type;
         this.nb_places = nb_places;
         this.status = status;
@@ -34,10 +33,6 @@ public class Avion {
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        id = id;
     }
 
 

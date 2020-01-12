@@ -16,6 +16,7 @@ public class Client{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id_client")
     private long id;
 
     @Column(name="first_name")
@@ -24,15 +25,13 @@ public class Client{
     @Column(name="last_name")
     private String lastName;
 
-    private Ticket tickets;
 
     public Client() {
     }
 
-    public Client( String firstName, String lastName, Ticket tickets) {
+    public Client( String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.tickets = tickets;
     }
 
     public long getId() {
@@ -55,13 +54,6 @@ public class Client{
         this.lastName = lastName;
     }
 
-    public Ticket getTickets() {
-        return tickets;
-    }
-
-    public void setTickets(Ticket tickets) {
-        this.tickets = tickets;
-    }
 
 
     @java.lang.Override
@@ -70,7 +62,6 @@ public class Client{
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", tickets=" + tickets +
                 '}';
     }
 }
