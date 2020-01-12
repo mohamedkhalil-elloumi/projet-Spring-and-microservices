@@ -1,9 +1,12 @@
 package com.ensiairlines.app.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-import com.ensiairlines.app.model.Avion;
+import java.util.Optional;
+
+import com.ensiairlines.app.repo.AvionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name="Vol")
@@ -21,10 +24,10 @@ public class Vol {
     private String arrive;
 
     @Column(name="ETD")
-    private Date ETD ;
+    private String ETD ;
 
     @Column(name="ETA")
-    private Date ETA ;
+    private String ETA ;
 
     @Column(name="nb_Place_Dispo")
     private int nb_Place_Dispo ;
@@ -33,16 +36,23 @@ public class Vol {
     @JoinColumn(name="id_ticket")
     private List<Ticket> tickets;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="id_avion")
     private Avion avion;
 
-    public Vol(String depart, String arrive, Date ETD, Date ETA, Avion avion) {
+
+    public Vol() {
+    }
+
+    public Vol(String depart, String arrive, String ETD, String ETA, Avion avion) {
+
         this.depart = depart;
         this.arrive = arrive;
         this.ETD = ETD;
         this.ETA = ETA;
         this.avion = avion;
+        this.nb_Place_Dispo= this.avion.getNb_places();
+        this.tickets = new ArrayList<Ticket>();
     }
 
     public int getId() {
@@ -69,19 +79,19 @@ public class Vol {
         this.arrive = arrive;
     }
 
-    public Date getETD() {
+    public String getETD() {
         return ETD;
     }
 
-    public void setETD(Date ETD) {
+    public void setETD(String ETD) {
         this.ETD = ETD;
     }
 
-    public Date getETA() {
+    public String getETA() {
         return ETA;
     }
 
-    public void setETA(Date ETA) {
+    public void setETA(String ETA) {
         this.ETA = ETA;
     }
 

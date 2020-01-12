@@ -1,5 +1,8 @@
 package com.ensiairlines.app.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +13,7 @@ public class Avion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id_avion")
-    private long id;
+    private int id;
 
     @Column(name = "type")
     private String type;
@@ -22,16 +25,19 @@ public class Avion {
     private boolean status;
 
     public Avion() {
+        super();
     }
 
+
     public Avion(String type, int nb_places, boolean status) {
+        super();
         this.type = type;
         this.nb_places = nb_places;
         this.status = status;
     }
 
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
