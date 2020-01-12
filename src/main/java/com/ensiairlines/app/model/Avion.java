@@ -28,6 +28,12 @@ public class Avion {
         super();
     }
 
+    public Avion(int id, String type, int nb_places, boolean status) {
+        this.id = id;
+        this.type = type;
+        this.nb_places = nb_places;
+        this.status = status;
+    }
 
     public Avion(String type, int nb_places, boolean status) {
         super();

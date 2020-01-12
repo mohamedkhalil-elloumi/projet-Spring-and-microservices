@@ -3,10 +3,7 @@ package com.ensiairlines.app.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import com.ensiairlines.app.repo.AvionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name="Vol")
@@ -29,15 +26,15 @@ public class Vol {
     @Column(name="ETA")
     private String ETA ;
 
-    @Column(name="nb_Place_Dispo")
-    private int nb_Place_Dispo ;
+    @Column(name="nb_Place_Reserve")
+    private int nb_Place_Reserve ;
 
     @OneToMany
     @JoinColumn(name="id_ticket")
     private List<Ticket> tickets;
 
     @ManyToOne
-    @JoinColumn(name="id_avion")
+    @JoinColumn(name="id")
     private Avion avion;
 
 
@@ -51,7 +48,7 @@ public class Vol {
         this.ETD = ETD;
         this.ETA = ETA;
         this.avion = avion;
-        this.nb_Place_Dispo= this.avion.getNb_places();
+        this.nb_Place_Reserve= 0;
         this.tickets = new ArrayList<Ticket>();
     }
 
@@ -95,19 +92,19 @@ public class Vol {
         this.ETA = ETA;
     }
 
-    public int getNb_Place_Dispo() {
-        return nb_Place_Dispo;
+    public int getNb_Place_Reserve() {
+        return nb_Place_Reserve;
     }
 
-    public void setNb_Place_Dispo(int nb_Place_Dispo) {
-        this.nb_Place_Dispo = nb_Place_Dispo;
+    public void setNb_Place_Reserve(int nb_Place_Reserve) {
+        this.nb_Place_Reserve = nb_Place_Reserve;
     }
 
-    public List<Ticket> getListe() {
+    public List<Ticket> getTickets() {
         return this.tickets;
     }
 
-    public void setListe(List<Ticket> liste) {
+    public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
     }
 
