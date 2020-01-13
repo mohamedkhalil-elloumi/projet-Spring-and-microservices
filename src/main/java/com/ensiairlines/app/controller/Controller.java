@@ -10,16 +10,11 @@ import com.ensiairlines.app.repo.VolRepository;
 import com.ensiairlines.app.repo.TicketRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -77,6 +72,19 @@ public class Controller {
         return vols;
     }
 
+
+    @GetMapping(value = "vols/{id}")
+    public Vol findVolById(@PathVariable long id) {
+
+        Optional<Vol> _vol = volRepository.findById(id);
+        Vol vol = new Vol();
+        if(_vol.isPresent())
+           vol = _vol.get();
+        return vol;
+    }
+
+
+
     @PostMapping(value = "/vol/create")
     public Vol postVol(@RequestBody Vol vol) {
 
@@ -97,8 +105,18 @@ public class Controller {
     public Ticket postTicket(@RequestBody Ticket ticket) {
 
         Ticket _ticket= new Ticket();
+        Vol vol = findVolById(ticket.getVol().getId());
+        System.out.println(vol);
+        if(vol.getNb_Place_Reserve() < vol.getAvion().getNb_places())
+            vol.setNb_Place_Reserve(vol.getNb_Place_Reserve() + 1);
+        else
+            return _ticket;
+
         _ticket = ticketRepository.save(ticket);
+
         return _ticket;
     }
+
+
 
 }

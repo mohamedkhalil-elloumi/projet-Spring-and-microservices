@@ -12,7 +12,7 @@ public class Vol {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id_vol")
-    private int id;
+    private Long id;
 
     @Column(name = "Depart")
     private String depart;
@@ -48,12 +48,8 @@ public class Vol {
         this.nb_Place_Reserve= 0;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getDepart() {
@@ -104,5 +100,16 @@ public class Vol {
         this.avion = avion;
     }
 
-
+    @Override
+    public String toString() {
+        return "Vol{" +
+                "id=" + id +
+                ", depart='" + depart + '\'' +
+                ", arrive='" + arrive + '\'' +
+                ", ETD='" + ETD + '\'' +
+                ", ETA='" + ETA + '\'' +
+                ", nb_Place_Reserve=" + nb_Place_Reserve +
+                ", avion=" + avion +
+                '}';
+    }
 }
