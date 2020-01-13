@@ -29,9 +29,6 @@ public class Vol {
     @Column(name="nb_Place_Reserve")
     private int nb_Place_Reserve ;
 
-    @OneToMany
-    @JoinColumn(name="id_ticket")
-    private List<Ticket> tickets;
 
     @ManyToOne
     @JoinColumn(name="id")
@@ -49,7 +46,6 @@ public class Vol {
         this.ETA = ETA;
         this.avion = avion;
         this.nb_Place_Reserve= 0;
-        this.tickets = new ArrayList<Ticket>();
     }
 
     public int getId() {
@@ -98,14 +94,6 @@ public class Vol {
 
     public void setNb_Place_Reserve(int nb_Place_Reserve) {
         this.nb_Place_Reserve = nb_Place_Reserve;
-    }
-
-    public List<Ticket> getTickets() {
-        return this.tickets;
-    }
-
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
     }
 
     public Avion getAvion() {

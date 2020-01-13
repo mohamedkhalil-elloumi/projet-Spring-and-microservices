@@ -2,10 +2,12 @@ package com.ensiairlines.app.controller;
 
 import com.ensiairlines.app.model.Avion;
 import com.ensiairlines.app.model.Client;
+import com.ensiairlines.app.model.Ticket;
 import com.ensiairlines.app.model.Vol;
 import com.ensiairlines.app.repo.ClientRepository;
 import com.ensiairlines.app.repo.AvionRepository;
 import com.ensiairlines.app.repo.VolRepository;
+import com.ensiairlines.app.repo.TicketRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,6 +33,8 @@ public class Controller {
     AvionRepository avionRepository;
     @Autowired
     VolRepository volRepository;
+    @Autowired
+    TicketRepository ticketRepository;
 
 
     @GetMapping("/clients")
@@ -80,4 +84,21 @@ public class Controller {
         _vol = volRepository.save(vol);
         return _vol;
     }
+
+    @GetMapping("/tickets")
+    public List<Ticket> getAllTicket() {
+        List<Ticket> tickets = new ArrayList<>();
+        ticketRepository.findAll().forEach(tickets::add);
+
+        return tickets;
+    }
+
+    @PostMapping(value = "/ticket/create")
+    public Ticket postTicket(@RequestBody Ticket ticket) {
+
+        Ticket _ticket= new Ticket();
+        _ticket = ticketRepository.save(ticket);
+        return _ticket;
+    }
+
 }
