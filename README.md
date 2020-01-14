@@ -1,15 +1,15 @@
 # Project Spring and microservices
 
-##Monolithic Application
+## Monolithic Application
 
 We created an application that focuses on ticket booking for flights.
 
 On the server side we used Spring Boot and created a CRUD application for the classes like below:
 
-*Planes named Avion
-*Tickets named Ticket
-*Flights named Vol
-*Clients name Client
+* Planes named Avion
+* Tickets named Ticket
+* Flights named Vol
+* Clients name Client
 
 we created also the necessary APIs in order to make a communication between the front and back End.
 
@@ -20,7 +20,7 @@ npm install
 npm start
 ```
 
-##Microservices
+## Microservices
 
 **To push:**
 ```
