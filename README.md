@@ -8,4 +8,6 @@ git push
 ```
 
 **To pull:**
-`git pull`
+```
+git pull
+```
