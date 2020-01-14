@@ -13,7 +13,7 @@ On the server side we used Spring Boot and created a CRUD application for the cl
 
 we created also the necessary APIs in order to make a communication between the front and back End.
 
-The front application runs on the port 3000 and it is written using Reactjs. In order to run in just Open the terminal in the folder and type
+The front application runs on the **port 3000** and it is written using Reactjs. In order to **run it** just: Open the terminal in the folder and type
 
 ```
 npm install
