@@ -22,15 +22,9 @@ npm start
 
 ## Microservices
 
-**To push:**
-```
-git add .
-git commit -m "name_commit"
-git push
-```
+The DDD is presented as follows : 
+* The Avion microservice, exposes REST api on **port 9000**
+* The Vol microservice, exposes REST api on **port 9001**
+* The Client and Ticket microservice, exposes REST api on **port 9002**
 
-**To pull:**
-```
-git pull
-```
-
+The microservices use RestTemplate to communicate.
