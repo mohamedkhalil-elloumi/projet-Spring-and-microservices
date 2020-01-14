@@ -1,6 +1,7 @@
 package com.ensiairlines.app.service;
 
 import com.ensiairlines.app.model.Client;
+import com.ensiairlines.app.model.Ticket;
 import com.ensiairlines.app.repo.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,6 @@ import java.util.List;
 public class ClientService {
     @Autowired
     ClientRepository clientRepository;
-
 
     public List<Client> getAllClients() {
         List<Client> clients = new ArrayList<>();

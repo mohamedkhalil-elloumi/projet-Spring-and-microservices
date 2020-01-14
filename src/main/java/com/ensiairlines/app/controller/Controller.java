@@ -68,6 +68,11 @@ public class Controller {
     public List<Ticket> getAllTicket() {
         return ticketService.getAllTicket();
     }
+    @RequestMapping(value = "/tickets/{id}", method = RequestMethod.GET)
+    public List<Ticket> getClientAllTicket(@PathVariable int id) {
+        System.out.println(id);
+        return ticketService.getAllTicketByClient(id);
+    }
     @PostMapping(value = "/ticket/create")
     public Ticket postTicket(@RequestBody Ticket ticket) {
         return ticketService.postTicket(ticket);

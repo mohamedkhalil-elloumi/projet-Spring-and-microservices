@@ -38,4 +38,8 @@ public class TicketService {
 
         return _ticket;
     }
+
+    public List<Ticket> getAllTicketByClient(int id) {
+        return ticketRepository.findByClientId(id);
+    }
 }
